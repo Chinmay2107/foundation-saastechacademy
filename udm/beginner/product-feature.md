@@ -61,13 +61,13 @@ UDM offers framework for managing product features and specifications. Key to th
 
 **Discuss** ProductFeatureAppl and ProductFeatureApplType entities and analyse similarity with ProductAssoc and ProductAssocType entities.
 
-ProductFeatureAppl entity is used to establish relationship between Product and ProductFeature entity.
+* ProductFeatureAppl entity is used to establish relationship between **Product** and **ProductFeature** entity.
 Many products can have multiple features governing many to many relationship
-ProductFeatureApplType entity defines the meta data or characteristics of a product feature, It can be **OPTIONAL_FEATURE, REQUIRED_FEATURE, SELECTABLE_FEATURE, STANDARD_FEATURE**
-Similarly, ProductAssoc is ued to establish relationship between multiple Products. A product can be related to another product with some several types **For example: Complementary Product, Also Bought Together, Upgrade Product, Product Variant**. These types are defined in ProductAssocType entity 
+* ProductFeatureApplType entity defines the meta data or characteristics of a product feature, It can be **OPTIONAL_FEATURE, REQUIRED_FEATURE, SELECTABLE_FEATURE, STANDARD_FEATURE**
+* Similarly, **ProductAssoc** is ued to establish relationship between multiple Products. A product can be related to another product with some several types **For example: Complementary Product, Also Bought Together, Upgrade Product, Product Variant**. These types are defined in **ProductAssocType** entity 
 
 **Define** Men's Denim Pants product that is available in 3 colors (Light Blue, Nevy, Black) and 4 sizes (28, 30, 32, 34)
-```
+```json
 {
   "Product": {
     "ProductID": "1002",
@@ -227,15 +227,15 @@ Similarly, ProductAssoc is ued to establish relationship between multiple Produc
   
 **Write SQL** to select all available sizes for each color
 ```sql
-select
-	pf1.description as Size,
-	pf.description as Color
-from
+SELECT
+	pf1.DESCRIPTION as Size,
+	pf.DESCRIPTION as Color
+FROM
 	Product_Feature_Type pft1
-join product_feature pf on
+JOIN Product_Feature pf on
 	pft1.PRODUCT_FEATURE_TYPE_ID = pf.PRODUCT_FEATURE_TYPE_ID
 	and pft1.PRODUCT_FEATURE_TYPE_ID = "COLOR"
-join product_feature pf1 on
+JOIN Product_Feature pf1 ON
 	pft1.PRODUCT_FEATURE_TYPE_ID = pf.PRODUCT_FEATURE_TYPE_ID
-	and pf1.DESCRIPTION in (select DESCRIPTION from product_feature where product_feature.PRODUCT_FEATURE_TYPE_ID="SIZE" and DESCRIPTION>0);
+	AND pf1.DESCRIPTION IN (SELECT DESCRIPTION FROM Product_Feature WHERE Product_Feature.PRODUCT_FEATURE_TYPE_ID="SIZE" and DESCRIPTION>0);
 ```
