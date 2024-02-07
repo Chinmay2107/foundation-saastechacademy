@@ -59,130 +59,183 @@ UDM offers framework for managing product features and specifications. Key to th
 3. **Link Feature to Product using ProductFeatureAppl**: Associate the feature with a product, detailing applicability and sequence.
 4. **Specify Feature Application using ProductFeatureApplType**: Clarify the nature of the feature's application, whether it's standard, optional, required, distinguishing, or selectable.
 
+**Discuss** ProductFeatureAppl and ProductFeatureApplType entities and analyse similarity with ProductAssoc and ProductAssocType entities.
 
+ProductFeatureAppl entity is used to establish relationship between Product and ProductFeature entity.
+Many products can have multiple features governing many to many relationship
+ProductFeatureApplType entity defines the meta data or characteristics of a product feature, It can be **OPTIONAL_FEATURE, REQUIRED_FEATURE, SELECTABLE_FEATURE, STANDARD_FEATURE**
+Similarly, ProductAssoc is ued to establish relationship between multiple Products. A product can be related to another product with some several types **For example: Complementary Product, Also Bought Together, Upgrade Product, Product Variant**. These types are defined in ProductAssocType entity 
 
-A sample JSON data for "Men's Blue Denim Pants" product available in 3 sizes. 
-
+**Define** Men's Denim Pants product that is available in 3 colors (Light Blue, Nevy, Black) and 4 sizes (28, 30, 32, 34)
 ```
 {
   "Product": {
-    "ProductID": "1001",
-    "ProductName": "Men's Blue Denim Pants",
-    "Description": "Comfortable and stylish blue denim pants for men.",
+    "ProductID": "1002",
+    "ProductName": "Men's Denim Pants",
+    "Description": "Comfortable and stylish blue denim pants for men",
     "ProductType": "Clothing",
-    "Price": 49.99,
-    "Quantity": 500
+    "Price": 60.00,
+    "Quantity": 600
   },
-  "ProductFeatures": [
+  "ProductFeature": [
     {
-      "ProductFeatureID": "2001",
-      "FeatureType": "3001",
-      "Description": "Small"
+      "ProductFeatureID": "20001",
+      "FeatureType": "30001",
+      "Description": "28"
     },
     {
-      "ProductFeatureID": "2002",
-      "FeatureType": "3001",
-      "Description": "Medium"
+      "ProductFeatureID": "20002",
+      "FeatureType": "30002",
+      "Description": "30"
     },
     {
-      "ProductFeatureID": "2003",
-      "FeatureType": "3001",
-      "Description": "Large"
+      "ProductFeatureID": "20003",
+      "FeatureType": "30003",
+      "Description": "32"
     },
     {
-      "ProductFeatureID": "2004",
-      "FeatureType": "3002",
-      "Description": "Blue"
+      "ProductFeatureID": "20004",
+      "FeatureType": "30004",
+      "Description": "34"
     },
     {
-      "ProductFeatureID": "2005",
-      "FeatureType": "3003",
-      "Description": "Denim"
+      "ProductFeatureID": "20005",
+      "FeatureType": "30005",
+      "Description": "Light Blue"
+    },
+    {
+      "ProductFeatureID": "20006",
+      "FeatureType": "30006",
+      "Description": "Nevy Blue"
+    },
+    {
+      "ProductFeatureID": "20007",
+      "FeatureType": "30007",
+      "Description": "Black"
     }
   ],
   "ProductFeatureTypes": [
     {
-      "ProductFeatureTypeID": "3001",
+      "ProductFeatureTypeID": "30001",
       "Description": "Size"
     },
     {
-      "ProductFeatureTypeID": "3002",
+      "ProductFeatureTypeID": "30002",
+      "Description": "Size"
+    },
+    {
+      "ProductFeatureTypeID": "30003",
+      "Description": "Size"
+    }
+    {
+      "ProductFeatureTypeID": "30004",
       "Description": "Color"
     },
     {
-      "ProductFeatureTypeID": "3003",
-      "Description": "Material"
+      "ProductFeatureTypeID": "30005",
+      "Description": "Color"
+    },
+    {
+      "ProductFeatureTypeID": "30006",
+      "Description": "Color"
     }
   ],
   "ProductFeatureAppl": [
     {
-      "ProductID": "1001",
-      "ProductFeatureID": "2001",
-      "FromDate": "2024-01-01",
-      "ThruDate": "2024-12-31",
+      "ProductID": "1002",
+      "ProductFeatureID": "20001",
+      "FromDate": "2024-02-01",
+      "ThruDate": "2024-02-01",
       "SequenceNumber": 1,
       "Amount": null,
-      "ProductFeatureApplTypeID": "4004"
+      "ProductFeatureApplTypeID": "40001"
     },
     {
-      "ProductID": "1001",
-      "ProductFeatureID": "2002",
-      "FromDate": "2024-01-01",
-      "ThruDate": "2024-12-31",
+      "ProductID": "1002",
+      "ProductFeatureID": "20002",
+      "FromDate": "2024-02-01",
+      "ThruDate": "2024-02-01",
       "SequenceNumber": 2,
       "Amount": null,
-      "ProductFeatureApplTypeID": "4004"
+      "ProductFeatureApplTypeID": "40002"
     },
     {
-      "ProductID": "1001",
-      "ProductFeatureID": "2003",
-      "FromDate": "2024-01-01",
-      "ThruDate": "2024-12-31",
+      "ProductID": "1002",
+      "ProductFeatureID": "20003",
+      "FromDate": "2024-02-01",
+      "ThruDate": "2024-02-01",
       "SequenceNumber": 3,
       "Amount": null,
-      "ProductFeatureApplTypeID": "4004"
+      "ProductFeatureApplTypeID": "40003"
     },
     {
-      "ProductID": "1001",
-      "ProductFeatureID": "2004",
-      "FromDate": "2024-01-01",
-      "ThruDate": "2024-12-31",
+      "ProductID": "1002",
+      "ProductFeatureID": "20004",
+      "FromDate": "2024-02-01",
+      "ThruDate": "2024-02-01",
       "SequenceNumber": 4,
       "Amount": null,
-      "ProductFeatureApplTypeID": "4001"
+      "ProductFeatureApplTypeID": "40004"
     },
     {
-      "ProductID": "1001",
-      "ProductFeatureID": "2005",
-      "FromDate": "2024-01-01",
-      "ThruDate": "2024-12-31",
+      "ProductID": "1002",
+      "ProductFeatureID": "20005",
+      "FromDate": "2024-02-01",
+      "ThruDate": "2024-02-01",
       "SequenceNumber": 5,
       "Amount": null,
-      "ProductFeatureApplTypeID": "4001"
+      "ProductFeatureApplTypeID": "40005"
+    },
+    {
+      "ProductID": "1002",
+      "ProductFeatureID": "20006",
+      "FromDate": "2024-02-01",
+      "ThruDate": "2024-02-01",
+      "SequenceNumber": 6,
+      "Amount": null,
+      "ProductFeatureApplTypeID": "40006"
     }
   ],
   "ProductFeatureApplTypes": [
     {
-      "ProductFeatureApplTypeID": "4001",
-      "Description": "STANDARD_FEATURE"
+      "ProductFeatureApplTypeID": "40001",
+      "Description": "SELECTABLE_FEATURE"
     },
     {
-      "ProductFeatureApplTypeID": "4002",
-      "Description": "OPTIONAL_FEATURE"
+      "ProductFeatureApplTypeID": "40002",
+      "Description": "SELECTABLE_FEATURE"
     },
     {
-      "ProductFeatureApplTypeID": "4003",
-      "Description": "REQUIRED_FEATURE"
+      "ProductFeatureApplTypeID": "40003",
+      "Description": "SELECTABLE_FEATURE"
     },
     {
-      "ProductFeatureApplTypeID": "4004",
+      "ProductFeatureApplTypeID": "40004",
+      "Description": "SELECTABLE_FEATURE"
+    },
+    {
+      "ProductFeatureApplTypeID": "40005",
+      "Description": "SELECTABLE_FEATURE"
+    },
+    {
+      "ProductFeatureApplTypeID": "40006",
       "Description": "SELECTABLE_FEATURE"
     }
   ]
 }
 ```
-
-**Activity:** 
-**Discuss** ProductFeatureAppl and ProductFeatureApplTypes entities and analyse similarity with ProductAssoc and ProductAssocType entities.
-**Define** Men's Denim Pants product that is available in 3 colors (Light Blue, Nevy, Black) and 4 sizes (28, 30, 32, 34)  
+  
 **Write SQL** to select all available sizes for each color
+```sql
+select
+	pf1.description as Size,
+	pf.description as Color
+from
+	Product_Feature_Type pft1
+join product_feature pf on
+	pft1.PRODUCT_FEATURE_TYPE_ID = pf.PRODUCT_FEATURE_TYPE_ID
+	and pft1.PRODUCT_FEATURE_TYPE_ID = "COLOR"
+join product_feature pf1 on
+	pft1.PRODUCT_FEATURE_TYPE_ID = pf.PRODUCT_FEATURE_TYPE_ID
+	and pf1.DESCRIPTION in (select DESCRIPTION from product_feature where product_feature.PRODUCT_FEATURE_TYPE_ID="SIZE" and DESCRIPTION>0);
+```
